@@ -6,7 +6,21 @@
 
         <x-jet-validation-errors class="mb-4" />
 
-        <form method="POST" action="{{ route('register') }}">
+        <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header"> {{ isset($url) ? ucwords($url) : ""}} {{ __('Register') }}</div>
+    
+                    <div class="card-body">
+                        @isset($url)
+                        <form method="POST" action='{{ url("register/$url") }}' aria-label="{{ __('Register') }}">
+                        @else
+                        <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
+                        @endisset
+                            @csrf
+
+        <!-- <form method="POST" action="{{ route('register') }}"> -->
             @csrf
 
             <div>
@@ -27,6 +41,11 @@
             <div class="mt-4">
                 <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
                 <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="guard" value="{{ __('Guard') }}" />
+                <x-jet-input id="guard" class="block mt-1 w-full" type="text" name="guard" required />
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
@@ -56,5 +75,6 @@
                 </x-jet-button>
             </div>
         </form>
+        </div>
     </x-jet-authentication-card>
 </x-guest-layout>
