@@ -26,17 +26,16 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 
-    Route::get('/login/lecturer', 'Auth\LoginController@showLecturerLoginForm');
-    // Route::get('/login/student', 'Auth\LoginController@showStudentLoginForm');
+    Route::get('/login/lecturer', [LoginController::class, 'showLecturerLoginForm']);
     Route::get('/login/student', [LoginController::class, 'showStudentLoginForm']);
-    Route::get('/register/lecturer', 'Auth\RegisterController@showLecturerRegisterForm');
-    Route::get('/register/student', 'Auth\RegisterController@showStudentRegisterForm');
+    Route::get('/register/lecturer', [RegisterController::class, 'showLecturerRegisterForm']);
+    Route::get('/register/student', [RegisterController::class, 'showStudentRegisterForm']);
     
-    Route::post('/login/lecturer', 'Auth\LoginController@lecturerLogin');
-    Route::post('/login/student', 'Auth\LoginController@studentLogin');
-    Route::post('/register/lecturer', 'Auth\RegisterController@createLecturer');
-    Route::post('/register/student', 'Auth\RegisterController@createStudent');
+    Route::post('/login/lecturer', [LoginController::class, 'lecturerLogin']);
+    Route::post('/login/student', [LoginController::class, 'studentLogin']);
+    Route::post('/register/lecturer', [RegisterController::class, 'createLecturer']);
+    Route::post('/register/student', [RegisterController::class, 'createStudent']);
     
     Route::view('/home', 'home')->middleware('auth');
-    Route::view('/lecturer', 'lecturer');
-    Route::view('/student', 'student');
+    Route::view('/lecturer', 'lecturer')->middleware('auth');
+    Route::view('/student', 'student')->middleware('auth');

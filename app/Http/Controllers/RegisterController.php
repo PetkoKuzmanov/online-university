@@ -12,7 +12,6 @@ use Illuminate\Routing\Controller as BaseController;
 
 class RegisterController extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function __construct()
         {

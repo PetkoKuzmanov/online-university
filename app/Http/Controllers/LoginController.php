@@ -18,12 +18,12 @@ class LoginController extends BaseController
             $this->middleware('guest:student')->except('logout');
         }
 
-    public function showAdminLoginForm()
+    public function showLecturerLoginForm()
     {
         return view('auth.login', ['url' => 'lecturer']);
     }
 
-    public function adminLogin(Request $request)
+    public function lecturerLogin(Request $request)
     {
         $this->validate($request, [
             'email'   => 'required|email',
