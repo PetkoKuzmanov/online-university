@@ -6,6 +6,12 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
+use Laravel\Fortify\Http\Requests\LoginRequest;
+
 
 class LoginController extends BaseController
 {
@@ -15,7 +21,7 @@ class LoginController extends BaseController
         {
             $this->middleware('guest')->except('logout');
             $this->middleware('guest:lecturer')->except('logout');
-            $this->middleware('guest:student')->except('logout');
+            // $this->middleware('guest:student')->except('logout');
         }
 
     public function showLecturerLoginForm()
@@ -30,9 +36,8 @@ class LoginController extends BaseController
             'password' => 'required|min:6'
         ]);
     
-        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
-    
-            return redirect()->intended('/admin');
+        if (Auth::guard('lecturer')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+            return redirect()->intended('/lecturer');
         }
         return back()->withInput($request->only('email', 'remember'));
     }
@@ -50,7 +55,6 @@ class LoginController extends BaseController
         ]);
     
         if (Auth::guard('student')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
-    
             return redirect()->intended('/student');
         }
         return back()->withInput($request->only('email', 'remember'));

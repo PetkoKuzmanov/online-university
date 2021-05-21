@@ -20,8 +20,8 @@ Route::get('/', function () {
 });
 
 
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//auth::sanctum
+Route::middleware(['auth', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
@@ -37,5 +37,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     Route::post('/register/student', [RegisterController::class, 'createStudent']);
     
     Route::view('/home', 'home')->middleware('auth');
-    Route::view('/lecturer', 'lecturer')->middleware('auth');
-    Route::view('/student', 'student')->middleware('auth');
+    Route::view('/lecturer', 'lecturer');
+    Route::view('/student', 'student');

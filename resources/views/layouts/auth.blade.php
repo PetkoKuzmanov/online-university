@@ -55,6 +55,7 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+                                    <p>{{Auth::user() == null? 'not authenticated' : Auth::id()}}</p>
                                 </div>
                             </li>
                         </ul>
