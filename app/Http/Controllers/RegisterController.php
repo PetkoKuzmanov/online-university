@@ -23,7 +23,7 @@ class RegisterController extends BaseController
         {
             $this->middleware('guest');
             $this->middleware('guest:lecturer');
-            // $this->middleware('guest:student');
+            $this->middleware('guest:student');
         }
 
         public function showLecturerRegisterForm()

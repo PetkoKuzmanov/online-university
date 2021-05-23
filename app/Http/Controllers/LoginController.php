@@ -21,7 +21,7 @@ class LoginController extends BaseController
         {
             $this->middleware('guest')->except('logout');
             $this->middleware('guest:lecturer')->except('logout');
-            // $this->middleware('guest:student')->except('logout');
+            $this->middleware('guest:student')->except('logout');
         }
 
     public function showLecturerLoginForm()
@@ -60,7 +60,9 @@ class LoginController extends BaseController
         return back()->withInput($request->only('email', 'remember'));
     }
 
-    public function testRoute() {
-        return view('welcome');
+    protected function guard() {
+        $user = Auth::guard('lecturer')->getLastAttempted();
+            Auth::guard('lecturer')->login($user);
+        return Auth::guard('lecturer');
     }
 }

@@ -56,6 +56,17 @@
                                         @csrf
                                     </form>
                                     <p>{{Auth::user() == null? 'not authenticated' : Auth::id()}}</p>
+                                    @auth("web")
+                                        You're a user!
+                                    @endauth
+
+                                    @auth("lecturer")
+                                        You're a lecturer!
+                                    @endauth
+
+                                    @auth("student")
+                                        You're a student!
+                                    @endauth
                                 </div>
                             </li>
                         </ul>
