@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LecturerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -46,5 +47,7 @@ Route::post('/register/lecturer', [RegisterController::class, 'createLecturer'])
 Route::post('/register/student', [RegisterController::class, 'createStudent']);
     
 Route::view('/home', 'home')->middleware('auth');
-Route::view('/lecturer', 'lecturer');
+// Route::view('/lecturer', 'lecturer');
 Route::view('/student', 'student');
+
+Route::get('/lecturer', [LecturerController::class, 'index'])->name('lecturer.index');
