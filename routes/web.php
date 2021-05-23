@@ -21,12 +21,10 @@ Route::get('/', function () {
 });
 
 Route::get('/auth/lecturer', function () {
-    // return view('welcome');
     return view('authLecturer');
 })->name('auth.lecturer');
 
 Route::get('/auth/student', function () {
-    // return view('welcome');
     return view('authStudent');
 })->name('auth.student');
 

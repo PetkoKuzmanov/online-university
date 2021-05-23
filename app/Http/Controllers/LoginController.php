@@ -60,9 +60,9 @@ class LoginController extends BaseController
         return back()->withInput($request->only('email', 'remember'));
     }
 
-    protected function guard() {
-        $user = Auth::guard('lecturer')->getLastAttempted();
-            Auth::guard('lecturer')->login($user);
-        return Auth::guard('lecturer');
-    }
+    // protected function guard() {
+    //     $user = Auth::guard('lecturer')->getLastAttempted();
+    //         Auth::guard('lecturer')->login($user);
+    //     return Auth::guard('lecturer');
+    // }
 }

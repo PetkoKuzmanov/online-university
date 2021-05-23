@@ -17,9 +17,9 @@ class Lecturer extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
-    
+
     protected $guard = 'lecturer';
-    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -60,4 +60,9 @@ class Lecturer extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
+    }
 }

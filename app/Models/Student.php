@@ -62,4 +62,14 @@ class Student extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class)->as('enrollment');
+    }
+
+    public function assignments()
+    {
+        return $this->belongsToMany(Assignment::class);
+    }
 }
