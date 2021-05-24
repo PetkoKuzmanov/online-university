@@ -54,3 +54,4 @@ Route::get('lecturer', [LecturerController::class, 'index'])->name('lecturer.ind
 
 Route::get('lecturer/create/course', [CourseController::class, 'create'])->name('create.course');
 Route::post('lecturer/create/course', [CourseController::class, 'store'])->name('store.course');
+Route::get('course/{course}', [CourseController::class, 'show'])->name('show.course');
