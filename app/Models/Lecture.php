@@ -9,8 +9,15 @@ class Lecture extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title'];
+
     public function course()
     {
         return $this->belongsTo(Course::class);
+    }
+
+    public function files()
+    {
+      return $this->hasMany(File::class);
     }
 }

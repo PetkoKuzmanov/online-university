@@ -405,13 +405,18 @@
     <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
         <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
             <div class="grid grid-cols-1 md:grid-cols-2">
+
                 <!-- Create a new lecture -->
                 <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
+                    @foreach($lecture->files as $file)
                     <div class="flex items-center">
-                        <div class="ml-4 text-lg leading-7 font-semibold"><h1 class="text-gray-900 dark:text-white">{{$lecture->url}}</h1></div>
+                        <div class="ml-4 text-lg leading-7 font-semibold">
+                            <h1 class="text-gray-900 dark:text-white">{{$file->name}}</h1>
+                        </div>
                     </div>
-                </div>
+                    @endforeach
 
+                </div>
             </div>
         </div>
     </div>

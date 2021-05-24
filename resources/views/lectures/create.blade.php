@@ -413,9 +413,10 @@
                         <input id="title" class="block mt-1 w-full " type="text" name="title" :value="old('title')" required autofocus />
                     </div>
                     <br>
+
                     <div class="mt-5">
-                        <label class="block text-sm font-medium text-gray-700">File:</label>
-                        <input id="url" class="block mt-1 w-full" type="text" name="url" :value="old('url')" required />
+                        <label class="block text-sm font-medium text-gray-700">Files:</label>
+                        <input type="file" class="custom-file-input" id="inputGroupFile01" name="files[]" multiple>
                     </div>
 
                     <input type="submit" value="Submit">
