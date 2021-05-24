@@ -16,7 +16,7 @@ class LecturerController extends BaseController
     public function index()
     {
         $lecturer = Lecturer::all()->get(Auth::id() - 1);
-        $courses = $lecturer->courses();
+        $courses = $lecturer->courses;
 
         return view('lecturer', ['courses' => $courses]);
     }
