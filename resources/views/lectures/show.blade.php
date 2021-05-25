@@ -411,7 +411,7 @@
                     @foreach($lecture->files as $file)
                     <div class="flex items-center">
                         <div class="ml-4 text-lg leading-7 font-semibold">
-                            <h1 class="text-gray-900 dark:text-white">{{$file->name}}</h1>
+                            <a href="{{ route('download.file', ['file' => $file]) }}" class="underline text-gray-900 dark:text-white">{{$file->name}}</a>
                         </div>
                     </div>
                     @endforeach

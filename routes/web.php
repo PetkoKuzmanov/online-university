@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LectureController;
+use App\Http\Controllers\FileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,3 +75,7 @@ Route::get('courses/{course}', [CourseController::class, 'show'])->name('show.co
 Route::get('courses/{course}/lectures/create', [LectureController::class, 'create'])->name('create.lecture');
 Route::post('courses/{course}/lectures/create', [LectureController::class, 'store'])->name('store.lecture');
 Route::get('courses/{course}/lectures/{lecture}', [LectureController::class, 'show'])->name('show.lecture');
+
+
+//File
+Route::get('files/{file}', [FileController::class, 'download'])->name('download.file');

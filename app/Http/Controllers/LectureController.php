@@ -11,6 +11,7 @@ use App\Models\Course;
 use App\Models\Lecture;
 use App\Models\File;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class LectureController extends BaseController
 {
