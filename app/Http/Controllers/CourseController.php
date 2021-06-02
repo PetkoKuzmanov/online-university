@@ -35,8 +35,8 @@ class CourseController extends BaseController
         return redirect()->route('lecturer.index');
     }
 
-    public function show(Course $course)
-    {
-        return view('courses.show', ['course' => $course]);
-    }
+    // public function show(Course $course)
+    // {
+    //     return view('courses.show', ['course' => $course]);
+    // }
 }

@@ -74,8 +74,12 @@ Route::get('courses/{course}', [CourseController::class, 'show'])->name('show.co
 //Lecture
 Route::get('courses/{course}/lectures/create', [LectureController::class, 'create'])->name('create.lecture');
 Route::post('courses/{course}/lectures/create', [LectureController::class, 'store'])->name('store.lecture');
+Route::get('courses/{course}/lectures', [LectureController::class, 'index'])->name('index.lecture');
 Route::get('courses/{course}/lectures/{lecture}', [LectureController::class, 'show'])->name('show.lecture');
 
+
+//Assignment
+// Route::get('courses/{course}/assignments', [LectureController::class, 'index'])->name('index.lecture');
 
 //File
 Route::get('files/{file}', [FileController::class, 'download'])->name('download.file');

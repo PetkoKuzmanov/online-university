@@ -50,4 +50,9 @@ class LectureController extends BaseController
     {
         return view('lectures.show', ['lecture' => $lecture]);
     }
+
+    public function index(Course $course)
+    {
+        return view('lectures.index', ['course' => $course]);
+    }
 }
