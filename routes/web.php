@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LectureController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\AssignmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,7 +80,11 @@ Route::get('courses/{course}/lectures/{lecture}', [LectureController::class, 'sh
 
 
 //Assignment
-// Route::get('courses/{course}/assignments', [LectureController::class, 'index'])->name('index.lecture');
+Route::get('courses/{course}/assignments/create', [AssignmentController::class, 'create'])->name('create.assignment');
+Route::post('courses/{course}/assignments/create', [AssignmentController::class, 'store'])->name('store.assignment');
+Route::get('courses/{course}/assignments', [AssignmentController::class, 'index'])->name('index.assignment');
+Route::get('courses/{course}/assignments/{lecture}', [AssignmentController::class, 'show'])->name('show.assignment');
+
 
 //File
 Route::get('files/{file}', [FileController::class, 'download'])->name('download.file');
