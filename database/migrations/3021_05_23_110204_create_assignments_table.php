@@ -17,10 +17,14 @@ class CreateAssignmentsTable extends Migration
             $table->id();
             $table->timestamps();
 
+            //Title
+            $table->char('title', 100);
 
-            $table->unsignedBigInteger('course_id');
-            $table->foreign('course_id')->references('id')->on('courses')
-                ->onDelete('cascade')->onUpdate('cascade');
+            //File
+
+            // $table->unsignedBigInteger('course_id');
+            // $table->foreign('course_id')->references('id')->on('courses')
+            //     ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

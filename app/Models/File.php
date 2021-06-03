@@ -13,8 +13,18 @@ class File extends Model
         'name',
     ];
 
+    public function fileable()
+    {
+      return $this->morphsTo();
+    }
+
     public function lecture()
     {
-      return $this->belongsTo(Lecture::class);
+        return $this->belongsTo(Lecture::class);
+    }
+
+    public function assignment()
+    {
+        return $this->belongsTo(Assignment::class);
     }
 }

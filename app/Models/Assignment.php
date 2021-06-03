@@ -9,6 +9,8 @@ class Assignment extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title'];
+
     public function course()
     {
         return $this->belongsTo(Course::class);
@@ -17,5 +19,10 @@ class Assignment extends Model
     public function students()
     {
         return $this->belongsToMany(Student::class);
+    }
+
+    public function files()
+    {
+      return $this->morphMany(File::class, 'file');
     }
 }

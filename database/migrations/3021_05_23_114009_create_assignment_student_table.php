@@ -17,6 +17,9 @@ class CreateAssignmentStudentTable extends Migration
             $table->primary(['assignment_id', 'student_id']);
             $table->timestamps();
 
+            //Student uploaded file
+            //Grade
+
             $table->unsignedBigInteger('assignment_id');
             $table->foreign('assignment_id')->references('id')->on('assignments')
                 ->onDelete('cascade')->onUpdate('cascade');

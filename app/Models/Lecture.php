@@ -18,6 +18,6 @@ class Lecture extends Model
 
     public function files()
     {
-      return $this->hasMany(File::class);
+      return $this->morphMany(File::class, 'file');
     }
 }

@@ -51,7 +51,8 @@ class RegisterController extends BaseController
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
         ]);
-        
+        Auth::login($lecturer);
+
         return redirect()->intended('login/lecturer');
     }
 
@@ -63,6 +64,8 @@ class RegisterController extends BaseController
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
         ]);
+        Auth::login($student);
+
         return redirect()->intended('login/student');
     }
 }
