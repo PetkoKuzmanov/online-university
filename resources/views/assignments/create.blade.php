@@ -406,10 +406,10 @@
         <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
             <div class="grid grid-cols-1 md:grid-cols-2">
 
-                <form method="POST" action="{{ route('store.lecture', ['course' => $course->id]) }}" enctype="multipart/form-data" action="/details">
+                <form method="POST" action="{{ route('store.assignment', ['course' => $course->id]) }}" enctype="multipart/form-data" action="/details">
                     @csrf
                     <div class="mt-5">
-                        <label class="block text-sm font-medium text-gray-700">Lecture title:</label>
+                        <label class="block text-sm font-medium text-gray-700">Assignment title:</label>
                         <input id="title" class="block mt-1 w-full " type="text" name="title" :value="old('title')" required autofocus />
                     </div>
                     <br>

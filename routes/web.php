@@ -83,7 +83,7 @@ Route::get('courses/{course}/lectures/{lecture}', [LectureController::class, 'sh
 Route::get('courses/{course}/assignments/create', [AssignmentController::class, 'create'])->name('create.assignment');
 Route::post('courses/{course}/assignments/create', [AssignmentController::class, 'store'])->name('store.assignment');
 Route::get('courses/{course}/assignments', [AssignmentController::class, 'index'])->name('index.assignment');
-Route::get('courses/{course}/assignments/{lecture}', [AssignmentController::class, 'show'])->name('show.assignment');
+Route::get('courses/{course}/assignments/{assignment}', [AssignmentController::class, 'show'])->name('show.assignment');
 
 
 //File
