@@ -43,7 +43,7 @@ class AssignmentController extends BaseController
             $file->move(public_path('files'), $fileName);
         }
 
-        return redirect()->route('show.course', ['course' => $course]);
+        return redirect()->route('index.assignment', ['course' => $course]);
     }
 
     public function show(Course $course, Assignment $assignment)

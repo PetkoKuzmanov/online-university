@@ -43,7 +43,7 @@ class LectureController extends BaseController
             $file->move(public_path('files'), $fileName);
         }
 
-        return redirect()->route('show.course', ['course' => $course]);
+        return redirect()->route('index.lecture', ['course' => $course]);
     }
 
     public function show(Course $course, Lecture $lecture)

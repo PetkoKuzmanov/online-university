@@ -420,7 +420,7 @@
                     </div>
 
                     <input type="submit" value="Submit">
-                    <a href="{{ route('show.course', ['course' => $course->id]) }}" class="underline text-gray-900 dark:text-white">Cancel</a>
+                    <a href="{{ route('index.assignment', ['course' => $course->id]) }}" class="underline text-gray-900 dark:text-white">Cancel</a>
                 </form>
 
             </div>
