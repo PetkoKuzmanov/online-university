@@ -77,6 +77,7 @@ Route::get('courses/{course}/lectures/create', [LectureController::class, 'creat
 Route::post('courses/{course}/lectures/create', [LectureController::class, 'store'])->name('store.lecture');
 Route::get('courses/{course}/lectures', [LectureController::class, 'index'])->name('index.lecture');
 Route::get('courses/{course}/lectures/{lecture}', [LectureController::class, 'show'])->name('show.lecture');
+Route::delete('courses/{course}/lectures/{lecture}', [LectureController::class, 'delete'])->name('delete.lecture');
 
 
 //Assignment

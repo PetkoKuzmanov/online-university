@@ -12,6 +12,7 @@ use App\Models\Lecture;
 use App\Models\File;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File as FacadesFile;
 
 class LectureController extends BaseController
 {
@@ -54,5 +55,16 @@ class LectureController extends BaseController
     public function index(Course $course)
     {
         return view('lectures.index', ['course' => $course]);
+    }
+
+    public function delete(Course $course, Lecture $lecture)
+    {
+        foreach ($lecture->files()->get() as $file) {
+            $fileName = $file->name;
+            FacadesFile::delete('files/' . $fileName);
+        }
+        $lecture->delete();
+
+        return view('lectures.index', ['course' => $course])->with('message', 'Lecture was deleted');;
     }
 }
