@@ -70,6 +70,7 @@ Route::view('/student', 'student');
 Route::get('courses/create', [CourseController::class, 'create'])->name('create.course');
 Route::post('courses/create', [CourseController::class, 'store'])->name('store.course');
 Route::get('courses/{course}', [CourseController::class, 'show'])->name('show.course');
+Route::delete('courses/{course}', [CourseController::class, 'delete'])->name('delete.course');
 
 
 //Lecture

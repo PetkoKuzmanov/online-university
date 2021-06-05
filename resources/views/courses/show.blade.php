@@ -424,6 +424,17 @@
                 </div>
             </div>
         </div>
+
+        <!-- Edit or delete the lecture -->
+        @if (Auth::user() && Auth::user()->id == $course->lecturer->id)
+        <div class="row justify-content-end">
+            <form method="POST" action="{{ route('delete.course', ['course' => $course->id]) }}">
+                @csrf
+                @method('DELETE')
+                <button class="btn btn-danger" type="submit">Delete</button>
+            </form>
+        </div>
+        @endif
     </div>
 </body>
 

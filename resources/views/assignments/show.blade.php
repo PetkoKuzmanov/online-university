@@ -423,7 +423,6 @@
         <!-- Edit or delete the lecture -->
         @if (Auth::user() && Auth::user()->id == $assignment->course->lecturer->id)
         <div class="row justify-content-end">
-
             <form method="POST" action="{{ route('delete.assignment', ['course' => $assignment->course->id, 'assignment' => $assignment->id]) }}">
                 @csrf
                 @method('DELETE')
