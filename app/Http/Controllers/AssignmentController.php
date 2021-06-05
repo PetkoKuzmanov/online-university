@@ -10,8 +10,7 @@ use Illuminate\Routing\Controller as BaseController;
 use App\Models\Course;
 use App\Models\Assignment;
 use App\Models\File;
-use App\Models\Lecture;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File as FacadesFile;
 
 class AssignmentController extends BaseController
 {
@@ -53,6 +52,17 @@ class AssignmentController extends BaseController
 
     public function index(Course $course)
     {
+        return view('assignments.index', ['course' => $course]);
+    }
+
+    public function delete(Course $course, Assignment $assignment)
+    {
+        foreach ($assignment->files()->get() as $file) {
+            $fileName = $file->name;
+            FacadesFile::delete('files/' . $fileName);
+        }
+        $assignment->delete();
+
         return view('assignments.index', ['course' => $course]);
     }
 }

@@ -85,6 +85,7 @@ Route::get('courses/{course}/assignments/create', [AssignmentController::class, 
 Route::post('courses/{course}/assignments/create', [AssignmentController::class, 'store'])->name('store.assignment');
 Route::get('courses/{course}/assignments', [AssignmentController::class, 'index'])->name('index.assignment');
 Route::get('courses/{course}/assignments/{assignment}', [AssignmentController::class, 'show'])->name('show.assignment');
+Route::delete('courses/{course}/assignments/{assignment}', [AssignmentController::class, 'delete'])->name('delete.assignment');
 
 
 //File

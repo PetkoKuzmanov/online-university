@@ -65,6 +65,6 @@ class LectureController extends BaseController
         }
         $lecture->delete();
 
-        return view('lectures.index', ['course' => $course])->with('message', 'Lecture was deleted');;
+        return view('lectures.index', ['course' => $course]);
     }
 }
