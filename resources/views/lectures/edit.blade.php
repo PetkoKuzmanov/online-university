@@ -400,44 +400,32 @@
 
 <body class="antialiased">
     <div class="relative flex items-top justify-center">
-        <h1>{{$lecture->title}}</h1>
+        <h1>Edit a lecture</h1>
     </div>
     <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
         <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
             <div class="grid grid-cols-1 md:grid-cols-2">
 
-                <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                    @foreach($lecture->files as $file)
-                    <div class="flex items-center">
-                        <div class="ml-4 text-lg leading-7 font-semibold">
-                            <a href="{{ route('download.file', ['file' => $file]) }}" class="underline text-gray-900 dark:text-white">{{$file->name}}</a>
-                        </div>
+                <form method="POST" action="{{ route('update.lecture', ['course' => $course->id, 'lecture' => $lecture->id]) }}" enctype="multipart/form-data" action="/details">
+                    @csrf
+                    @method('PUT')
+                    <div class="mt-5">
+                        <label class="block text-sm font-medium text-gray-700">Lecture title:</label>
+                        <input id="title" class="block mt-1 w-full " type="text" name="title" value="{{$lecture->title}}" required autofocus />
                     </div>
-                    @endforeach
+                    <br>
 
-                </div>
+                    <div class="mt-5">
+                        <label class="block text-sm font-medium text-gray-700">Files:</label>
+                        <input type="file" class="custom-file-input" id="inputGroupFile01" name="files[]" multiple>
+                    </div>
+
+                    <input type="submit" value="Submit">
+                    <a href="{{ route('index.lecture', ['course' => $course->id]) }}" class="underline text-gray-900 dark:text-white">Cancel</a>
+                </form>
+
             </div>
         </div>
-
-        <!-- Edit or delete the lecture -->
-        @if (Auth::user() && Auth::user()->id == $lecture->course->lecturer->id)
-        <div class="row justify-content-end">
-            <form method="POST" action="{{ route('edit.lecture', ['course' => $lecture->course->id, 'lecture' => $lecture->id]) }}">
-                @csrf
-                @method('PUT')
-                <button class="btn btn-danger" type="submit">Edit</button>
-            </form>
-
-            <form method="POST" action="{{ route('delete.lecture', ['course' => $lecture->course->id, 'lecture' => $lecture->id]) }}">
-                @csrf
-                @method('DELETE')
-                <button class="btn btn-danger" type="submit">Delete</button>
-            </form>
-        </div>
-        @endif
-    </div>
-    <div>
-
     </div>
 </body>
 

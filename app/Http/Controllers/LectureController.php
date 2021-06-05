@@ -67,4 +67,45 @@ class LectureController extends BaseController
 
         return view('lectures.index', ['course' => $course]);
     }
+
+    public function edit(Course $course, Lecture $lecture)
+    {
+        return view('lectures.edit', ['course' => $course], ['lecture' => $lecture]);
+    }
+
+    public function update(Request $request, Course $course, Lecture $lecture)
+    {
+        $validatedData = $request->validate([
+            'title' => 'required|max:100',
+            'files' => 'nullable',
+        ]);
+
+        //Create the assignment
+        $lecture->title = $validatedData['title'];
+        $lecture->course_id = $course->id;
+        $lecture->save();
+
+        if ($request->file('files') != null) {
+            //Delete the old files
+            foreach ($lecture->files()->get() as $file) {
+                $fileName = $file->name;
+                FacadesFile::delete('files/' . $fileName);
+            }
+
+            $lecture->files()->delete();
+
+            //Add the new files
+            foreach ($request->file('files') as $index => $file) {
+                $fileModel = new File;
+                $fileName = time() . $index . '.' . $file->extension();
+                $fileModel->name = $fileName;
+    
+                $lecture->files()->save($fileModel);
+                $file->move(public_path('files'), $fileName);
+            }
+    
+        }
+
+        return redirect()->route('show.lecture', ['course' => $course, 'lecture' => $lecture]);
+    }
 }

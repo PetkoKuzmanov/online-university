@@ -79,6 +79,8 @@ Route::post('courses/{course}/lectures/create', [LectureController::class, 'stor
 Route::get('courses/{course}/lectures', [LectureController::class, 'index'])->name('index.lecture');
 Route::get('courses/{course}/lectures/{lecture}', [LectureController::class, 'show'])->name('show.lecture');
 Route::delete('courses/{course}/lectures/{lecture}', [LectureController::class, 'delete'])->name('delete.lecture');
+Route::put('courses/{course}/lectures/edit/{lecture}', [LectureController::class, 'edit'])->name('edit.lecture');
+Route::put('courses/{course}/lectures/update/{lecture}', [LectureController::class, 'update'])->name('update.lecture');
 
 
 //Assignment
