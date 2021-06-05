@@ -406,7 +406,7 @@
         <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
             <div class="grid grid-cols-1 md:grid-cols-2">
 
-                <!-- Create a new lecture -->
+                <!-- Create a new assignment -->
                 <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
                     @foreach($assignment->files as $file)
                     <div class="flex items-center">
@@ -420,7 +420,7 @@
             </div>
         </div>
 
-        <!-- Edit or delete the lecture -->
+        <!-- Edit or delete the assignment -->
         @if (Auth::user() && Auth::user()->id == $assignment->course->lecturer->id)
         <div class="row justify-content-end">
             <form method="POST" action="{{ route('edit.assignment', ['course' => $assignment->course->id, 'assignment' => $assignment->id]) }}">

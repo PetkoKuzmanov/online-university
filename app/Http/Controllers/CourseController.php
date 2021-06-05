@@ -65,4 +65,25 @@ class CourseController extends BaseController
         
         return redirect()->route('lecturer.index');
     }
+
+    public function edit(Course $course)
+    {
+        return view('courses.edit', ['course' => $course]);
+    }
+
+    public function update(Request $request, Course $course)
+    {
+        $validatedData = $request->validate([
+            'code' => 'required|max:8',
+            'title' => 'required|max:100',
+        ]);
+
+        //Create the course
+        $course->code = $validatedData['code'];
+        $course->title = $validatedData['title'];
+        $course->lecturer_id = Auth::id();
+        $course->save();
+
+        return redirect()->route('show.course', ['course' => $course]);
+    }
 }
